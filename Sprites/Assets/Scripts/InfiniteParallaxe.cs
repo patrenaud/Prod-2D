@@ -12,12 +12,12 @@ public class InfiniteParallaxe : MonoBehaviour
 	private float m_ScreenWidth;
 	private Vector3 m_MovePos = new Vector3();
 
-	void Start () 
+	private void Start () 
 	{
 		m_ScreenWidth = -Screen.width/100f;
 	}	
 
-	void Update () 
+	private void Update () 
 	{
 		for(int i = 0; i < m_Backgrounds.Count; i++)
 		{
@@ -27,8 +27,8 @@ public class InfiniteParallaxe : MonoBehaviour
 			if(m_Backgrounds[i].transform.position.x < m_ScreenWidth)
 			{
 				// On assigne une nouvelle position en x au background ayant dépassé la limite
-				m_MovePos.x = -m_ScreenWidth * (m_Backgrounds.Count-1);
-				m_Backgrounds[i].transform.position = m_MovePos;
+				m_MovePos.x = -m_ScreenWidth * (m_Backgrounds.Count-1);					
+				m_Backgrounds[i].transform.position = m_MovePos;				
 			}
 		}
 	}

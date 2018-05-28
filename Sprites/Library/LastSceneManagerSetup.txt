@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Sprites.unity
+- path: Assets/TP1.unity
   isLoaded: 1
   isActive: 1

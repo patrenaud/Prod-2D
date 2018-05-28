@@ -47,13 +47,6 @@ public class Parallaxe : MonoBehaviour
 
 			// Interpollation linéaire de la position actuelle avec la position voulue pour créer l'effet de parallaxe
 			backGround.m_Visual.transform.position = Vector3.Lerp(backGround.m_Visual.transform.position, m_BackgroundTargetPos, m_Smoothing * Time.deltaTime);
-
-            if(m_Backgrounds[i].transform.position.x < m_ScreenWidth)
-			{
-				// On assigne une nouvelle position en x au background ayant dépassé la limite
-				m_MovePos.x = -m_ScreenWidth * (m_Backgrounds.Count-1);
-				m_Backgrounds[i].transform.position = m_MovePos;
-			}
         }
 
 		m_PreviousCamPos = m_Camera.position;
