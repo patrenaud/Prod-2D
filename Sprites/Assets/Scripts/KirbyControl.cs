@@ -7,15 +7,18 @@ using UnityEngine;
 public class KirbyControl : MonoBehaviour
 {
     [SerializeField]
-    private Animator m_Animator;
+    private Animator m_KirbyAnimator;
     private SpriteRenderer m_Visual;
 
-	public InfiniteParallaxe m_Parallaxe;
+    public Animator m_MetaKnightAnomator;
+    public SpriteRenderer m_MetaKnightSprite;
+    public InfiniteParallaxe m_Parallaxe;
 
     private void Awake()
     {
-        m_Visual = GetComponent<SpriteRenderer>();
-		
+        //m_Visual = GetComponent<SpriteRenderer>();
+        m_MetaKnightSprite.flipX = false;
+
     }
 
 
@@ -23,18 +26,22 @@ public class KirbyControl : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            m_Animator.SetTrigger("Run");
-			m_Parallaxe.SetSpeed();
+            m_KirbyAnimator.SetTrigger("Run");
+            m_MetaKnightAnomator.SetTrigger("Run");
+            m_MetaKnightSprite.flipX = false;
+            m_Parallaxe.SetSpeed();
         }
         else if (Input.GetKeyDown(KeyCode.I))
         {
-			m_Animator.SetTrigger("Idle");
-			m_Parallaxe.StopSpeed();
+            m_KirbyAnimator.SetTrigger("Idle");
+            m_MetaKnightAnomator.SetTrigger("Idle");
+            m_MetaKnightSprite.flipX = true;
+            m_Parallaxe.StopSpeed();
         }
         else if (Input.GetKeyDown(KeyCode.B))
         {
-            m_Animator.SetTrigger("Blow");
-			m_Parallaxe.StopSpeed();
+            m_KirbyAnimator.SetTrigger("Blow");
+            m_Parallaxe.StopSpeed();
         }
     }
 }
