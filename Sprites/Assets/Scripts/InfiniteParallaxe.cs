@@ -9,17 +9,16 @@ public class InfiniteParallaxe : MonoBehaviour
     public List<GameObject> m_Backgrounds = new List<GameObject>();
     public List<GameObject> m_Foregrounds = new List<GameObject>();
     public List<GameObject> m_Floor = new List<GameObject>();
+
     public float m_Speed_Background = 2f;
     public float m_Speed_Foreground = 5f;
     public float m_Speed_Floor = 10f;
-
-
     public float m_StopSpeed_Background = 0f;
     public float m_StopSpeed_Foreground = 0f;
     public float m_StopSpeed_Floor = 0f;
+
     private float m_ScreenWidth;
     private Vector3 m_MovePos = new Vector3();
-
     private GameObject m_PreviousBackground;
     private GameObject m_PreviousForeground;
     private GameObject m_PreviousFloor;

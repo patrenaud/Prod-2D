@@ -52,12 +52,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\AnimateText.cs" />
-     <Compile Include="Assets\Scripts\ButtonTextUI.cs" />
-     <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\InfiniteParallaxe.cs" />
      <Compile Include="Assets\Scripts\KirbyControl.cs" />
-     <Compile Include="Assets\Scripts\Parallaxe.cs" />
-     <Compile Include="Assets\Scripts\PlayerMove.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />

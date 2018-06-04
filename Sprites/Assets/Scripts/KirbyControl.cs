@@ -10,7 +10,7 @@ public class KirbyControl : MonoBehaviour
     private Animator m_KirbyAnimator;
     private SpriteRenderer m_Visual;
 
-    public Animator m_MetaKnightAnomator;
+    public Animator m_MetaKnightAnimator;
     public SpriteRenderer m_MetaKnightSprite;
     public InfiniteParallaxe m_Parallaxe;
 
@@ -18,7 +18,6 @@ public class KirbyControl : MonoBehaviour
     {
         //m_Visual = GetComponent<SpriteRenderer>();
         m_MetaKnightSprite.flipX = false;
-
     }
 
 
@@ -26,22 +25,34 @@ public class KirbyControl : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            m_KirbyAnimator.SetTrigger("Run");
-            m_MetaKnightAnomator.SetTrigger("Run");
-            m_MetaKnightSprite.flipX = false;
-            m_Parallaxe.SetSpeed();
+            RunButton();
         }
         else if (Input.GetKeyDown(KeyCode.I))
         {
-            m_KirbyAnimator.SetTrigger("Idle");
-            m_MetaKnightAnomator.SetTrigger("Idle");
-            m_MetaKnightSprite.flipX = true;
-            m_Parallaxe.StopSpeed();
+            IdleButton();
+
         }
         else if (Input.GetKeyDown(KeyCode.B))
         {
+            BlowButton();
+        }
+    }
+
+    public void RunButton()
+    {
+        m_KirbyAnimator.SetTrigger("Run");
+        m_MetaKnightAnimator.SetTrigger("Run");
+        m_Parallaxe.SetSpeed();
+    }
+    public void IdleButton()
+    {
+            m_KirbyAnimator.SetTrigger("Idle");
+            m_MetaKnightAnimator.SetTrigger("Idle");
+            m_Parallaxe.StopSpeed();
+    }
+    public void BlowButton()
+    {
             m_KirbyAnimator.SetTrigger("Blow");
             m_Parallaxe.StopSpeed();
-        }
     }
 }
