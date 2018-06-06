@@ -16,11 +16,10 @@ public class KirbyControl : MonoBehaviour
 
     private void Awake()
     {
-        //m_Visual = GetComponent<SpriteRenderer>();
         m_MetaKnightSprite.flipX = false;
     }
 
-
+    // On peut utiliser les touches du clavier pour activer les actions
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
@@ -38,6 +37,7 @@ public class KirbyControl : MonoBehaviour
         }
     }
 
+    // L'appel des 3 différents boutons
     public void RunButton()
     {
         m_KirbyAnimator.SetTrigger("Run");

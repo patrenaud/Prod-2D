@@ -6,21 +6,22 @@ using TMPro;
 public class AnimateText : MonoBehaviour
 {
     public float m_LetterDelay = 0.2f;
-    public TextMeshProUGUI m_KirbyText;
-    public TextMeshProUGUI m_MetaKnightText;
-    public string[] m_Text = new string[10];
+    public TextMeshProUGUI m_KirbyTextBox;
+    public TextMeshProUGUI m_MetaKnightTextBox;
+    public string[] m_KirbyText = new string[10];
+    public string[] m_MetaKnightText = new string[10];
 
+    //private int m_rounds = 0;
     private int m_Choices = 3;
     private int m_counter = 0;
 
-
     private void Start()
     {
-        //StartCoroutine(TypeText());
+        StartCoroutine(TypeMetaKnightText());
     }
 
     private void Update()
-    {
+    {   // Lorsque les boutons sont appuyés, les énumérateurs changeront le choix et fera apparaître un text différent du MetaKnight
         if (m_Choices == 0)
         {
             Debug.Log("RunTalk");
@@ -28,15 +29,17 @@ public class AnimateText : MonoBehaviour
         }
         else if (m_Choices == 1)
         {
+            Debug.Log("IdleTalk");
             StartCoroutine(IdleTalk());
         }
         else if (m_Choices == 2)
         {
+            Debug.Log("BlowTalk");
             StartCoroutine(BlowTalk());
         }
     }
 
-
+    // Ces 3 fonctions sont appelées par les 3 boutons pour activer dans l'Update l'énumérateur choisi
     public void SetRun()
     {
         m_Choices = 0;
@@ -50,45 +53,43 @@ public class AnimateText : MonoBehaviour
         m_Choices = 2;
     }
 
-
+    // Ces Enumerateurs appellent le text du MetaKnight en envoyant le bon index de text
+    // ICI ON FAIT LES CONDITIONS
     private IEnumerator RunTalk()
     {
-        m_counter = 0;
-        foreach (char letter in m_Text[m_counter].ToString())
-        {
-            m_KirbyText.text += letter;
-            yield return new WaitForSeconds(m_LetterDelay);
-        }
-        m_Choices = 3;
+        m_Choices = 3; // Ceci est pour ne pas appeler le string en boucle lors du clic du bouton
+        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(TypeMetaKnightText());
     }
     private IEnumerator IdleTalk()
     {
-        m_counter = 1;
-        TypeMetaKnightText();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(TypeMetaKnightText());
     }
     private IEnumerator BlowTalk()
     {
-        m_counter = 2;
-        TypeMetaKnightText();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(TypeMetaKnightText());
     }
 
-    /*private IEnumerator TypeKirbyText()
+    // Le texte de Kirby s'écrit
+    private IEnumerator TypeKirbyText()
     {
-        foreach (char letter in m_Text[m_counter].ToString())
+        foreach (char letter in m_KirbyText[m_counter].ToString())
         {
-            m_KirbyText.text += letter;
+            m_KirbyTextBox.text += letter;
             yield return new WaitForSeconds(m_LetterDelay);
         }
-    }*/
+    }
 
+    // Le texte de MetaKnight s'écrit
     private IEnumerator TypeMetaKnightText()
     {
-        foreach (char letter in m_Text[m_counter].ToString())
+        foreach (char letter in m_MetaKnightText[m_counter].ToString())
         {
-            m_KirbyText.text += letter;
+            m_MetaKnightTextBox.text += letter;
             yield return new WaitForSeconds(m_LetterDelay);
         }
+        StartCoroutine(TypeKirbyText());
     }
 }
